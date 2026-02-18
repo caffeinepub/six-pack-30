@@ -1,0 +1,81 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-17T17:08:32.207Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 4,
+    "implemented": 4,
+    "items": [
+      {
+        "id": "REQ-15",
+        "summary": "Prevent Day Details (including Day 1) from failing to load when the user is not signed in by ensuring progress-related React Query requests are disabled unless the user is authenticated, and show the Day Details content without completion badges when unauthenticated.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/hooks/useQueries.ts",
+          "frontend/src/pages/DayDetailsPage.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/hooks/useQueries.ts",
+          "frontend/src/pages/DayDetailsPage.tsx"
+        ]
+      },
+      {
+        "id": "REQ-16",
+        "summary": "Prevent the Program page from triggering unauthorized progress calls when signed out by gating the 'my progress' query on authentication and keeping the schedule browsable for unauthenticated users.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/hooks/useQueries.ts",
+          "frontend/src/pages/ProgramPage.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/hooks/useQueries.ts",
+          "frontend/src/pages/ProgramPage.tsx"
+        ]
+      },
+      {
+        "id": "REQ-17",
+        "summary": "Fix the workout runner countdown timer so seconds decrement reliably and reset correctly whenever the current exercise changes (e.g., when moving from the first timed exercise to the next exercise/rest).",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/hooks/useCountdownTimer.ts",
+          "frontend/src/pages/WorkoutRunnerPage.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/hooks/useCountdownTimer.ts",
+          "frontend/src/pages/WorkoutRunnerPage.tsx"
+        ]
+      },
+      {
+        "id": "REQ-18",
+        "summary": "Fix exercise demo video playback so videos referenced via `videoSrc` load and play consistently, and provide a clear in-UI fallback when a video file is missing or fails to load.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/exercise/ExerciseMedia.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/exercise/ExerciseMedia.tsx"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "build-request.json",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/src/components/exercise/ExerciseMedia.tsx",
+    "frontend/src/hooks/useCountdownTimer.ts",
+    "frontend/src/hooks/useQueries.ts",
+    "frontend/src/pages/DayDetailsPage.tsx",
+    "frontend/src/pages/ProgramPage.tsx",
+    "frontend/src/pages/WorkoutRunnerPage.tsx",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

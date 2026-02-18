@@ -1,0 +1,19 @@
+{
+  "frontend/src/index.css": "Global styles with warm fitness theme using OKLCH color system for both light and dark modes, including new gradient utility classes for fitness-themed visual accents.",
+  "frontend/tailwind.config.js": "Tailwind configuration extended with Inter font family, custom shadows, and theme tokens mapped to CSS variables for the warm fitness palette.",
+  "frontend/src/App.tsx": "Main application component with TanStack Router setup, ThemeProvider wrapper, and routes for dashboard, program, day details, workout runner, and onboarding pages.",
+  "frontend/src/hooks/useQueries.ts": "React Query hooks for fetching program data, user progress, day details, day progress, and user profile from the backend with authentication-gated queries that only execute when user is signed in.",
+  "frontend/src/hooks/useWorkoutActions.ts": "React Query mutations for marking days complete, resetting progress, and saving user profiles with automatic cache invalidation.",
+  "frontend/src/hooks/useCountdownTimer.ts": "Custom hook providing countdown timer functionality with start/pause/reset controls, formatted time display, and automatic reset when initial duration changes (e.g., when switching exercises).",
+  "frontend/src/lib/programContent.ts": "Frontend workout content model defining 30 days of progressive exercises with types, descriptions, durations, and media fields (imageSrc/videoSrc) now populated with video paths for Plank, Crunches, Bicycle Crunches, Mountain Climbers, Leg Raises, and Rest exercises, with image fallbacks retained.",
+  "frontend/src/lib/progressMath.ts": "Helper functions to calculate next incomplete day, current streak, and completion percentage from user progress data.",
+  "frontend/src/components/layout/AppShell.tsx": "Shared layout component with refreshed header featuring gradient accents, animated nav links with underline effects, energetic hover states, and gradient-enhanced mobile menu matching the warm fitness theme.",
+  "frontend/src/components/auth/LoginButton.tsx": "Authentication button component handling Internet Identity login/logout with loading states and query cache clearing.",
+  "frontend/src/components/auth/ProfileSetupModal.tsx": "Modal dialog for first-time user profile setup, prompting for name after initial login without flashing.",
+  "frontend/src/pages/DashboardPage.tsx": "Main dashboard showing hero image, progress stats (completed/streak/remaining), and continue CTA to next incomplete day or completion state.",
+  "frontend/src/pages/ProgramPage.tsx": "Full 30-day program calendar view organized by weeks, showing all days with completion status only when authenticated, and navigation to day details for all users.",
+  "frontend/src/pages/DayDetailsPage.tsx": "Day details page displaying workout title, description, estimated time, complete exercise list with media rendered via ExerciseMedia component, and completion badge only shown when authenticated and day is completed.",
+  "frontend/src/pages/WorkoutRunnerPage.tsx": "Interactive workout session page with exercise checklist, countdown timers that reset on exercise changes, progress tracking, per-exercise media display via ExerciseMedia component, and day completion functionality with proper timer pause/reset when navigating between exercises.",
+  "frontend/src/pages/OnboardingPage.tsx": "Informational page explaining the challenge, how to use the app, safety disclaimer, and call-to-action to start the program; updated Tailwind classes from flex-shrink-0 to shrink-0.",
+  "frontend/src/components/exercise/ExerciseMedia.tsx": "Reusable component that renders exercise demonstration media (video with HTML5 controls or image fallback) with 16:9 aspect ratio, robust error handling for failed media loads, and clear English fallback UI when media is unavailable or fails to load."
+}

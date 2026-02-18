@@ -1,0 +1,85 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Six Pack Challenge: Fix unauth progress gating, workout timer, and exercise video playback",
+  "requirements": [
+    {
+      "id": "REQ-15",
+      "summary": "Gate Day Details progress queries by authentication and render Day Details without completion state when signed out.",
+      "acceptanceCriteria": [
+        "When signed out, opening /day/1 renders the workout title, description, and exercise list without crashing or showing an error screen.",
+        "When signed out, no backend calls that require authorization are attempted for day progress (e.g., getDayProgress) and the UI does not show a completed badge.",
+        "When signed in, Day Details still shows the completion badge correctly based on saved progress."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/hooks/useQueries.ts",
+          "operation": "modify",
+          "description": "Update the progress-related React Query hook(s) to support an explicit enabled/auth gate (e.g., accept an options param) so callers can disable progress fetching when unauthenticated. Use the authorization component’s frontend guidance for determining authentication state and query gating; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/DayDetailsPage.tsx",
+          "operation": "modify",
+          "description": "Use Internet Identity authentication state to disable the day progress query when signed out and ensure the Day Details page renders workout content without completion badges when unauthenticated. Use the authorization component’s frontend guidance for auth state handling; verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-16",
+      "summary": "Gate Program page 'my progress' query by authentication while keeping the schedule fully browsable when signed out.",
+      "acceptanceCriteria": [
+        "When signed out, visiting /program renders the 30-day schedule without crashing and without attempting to call getMyProgress.",
+        "When signed in, /program shows completion indicators correctly using the user’s saved progress."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/hooks/useQueries.ts",
+          "operation": "modify",
+          "description": "Adjust the 'my progress' React Query hook to allow callers to disable execution when unauthenticated (e.g., options.enabled merged with actor readiness). Use the authorization component’s frontend guidance for auth-aware query gating; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/ProgramPage.tsx",
+          "operation": "modify",
+          "description": "Pass an auth-gated enabled flag to the progress hook so signed-out users can browse the schedule without triggering unauthorized progress calls; keep completion indicators visible only when authenticated. Use the authorization component’s frontend guidance; verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-17",
+      "summary": "Fix the workout runner countdown so it decrements reliably and resets/stops on exercise changes.",
+      "acceptanceCriteria": [
+        "On a timed or rest exercise in /workout/1, pressing Start decreases the displayed seconds every second until it reaches 0.",
+        "Switching to a different timed/rest exercise updates the timer to that exercise’s duration (and stops the previous timer).",
+        "The timer does not keep counting from a previous exercise’s remaining time after navigating Previous/Next or selecting an exercise from the list."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/hooks/useCountdownTimer.ts",
+          "operation": "modify",
+          "description": "Refactor the countdown logic so the interval lifecycle is stable (no duplicate intervals), seconds decrement reliably, and the hook resets/halts appropriately when the provided initial duration changes (e.g., when moving to a new exercise)."
+        },
+        {
+          "path": "frontend/src/pages/WorkoutRunnerPage.tsx",
+          "operation": "modify",
+          "description": "Ensure the timer is stopped and reset whenever the current exercise changes (Previous/Next or selecting from the list), and ensure switching between timed/rest exercises and non-timed exercises does not keep an old timer running."
+        }
+      ]
+    },
+    {
+      "id": "REQ-18",
+      "summary": "Make exercise demo videos load/play consistently and show a clear fallback UI when videos are missing or fail.",
+      "acceptanceCriteria": [
+        "On Day 1 (Day Details and Workout Runner), exercises that have a `videoSrc` render a visible video player and the user can press play to view the demo.",
+        "If a video fails to load (e.g., 404 or decoding error), the UI shows an English fallback state (not a blank area), and does not break page layout.",
+        "If an exercise has both `videoSrc` and `imageSrc`, the app still prioritizes the video, but can fall back gracefully if the video errors."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/exercise/ExerciseMedia.tsx",
+          "operation": "modify",
+          "description": "Add robust video rendering behavior: prioritize video when videoSrc exists, detect load/playback errors, and render an English fallback state (and optionally fall back to imageSrc when available) without breaking layout."
+        }
+      ]
+    }
+  ]
+}

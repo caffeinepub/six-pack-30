@@ -1,0 +1,197 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 9,
+  "summary": "Fitness app focused on a 30-day six-pack program.",
+  "architectural_notes": [
+    "Support per-exercise media assets (images and optionally short demo videos) in the workout/exercise UI; define an asset strategy (local static assets vs external hosted videos) and map media to each exercise type.",
+    "Decide on a video asset strategy for per-exercise media (local static files vs hosted URLs), and how the UI should fall back if a video is missing (e.g., show image or placeholder)."
+  ],
+  "known_issues": [
+    "Day 1 screen/flow is not working for the user (cannot open or proceed).",
+    "Workout runner timer seconds are not running/counting properly.",
+    "Exercise demo video is not working/playing in the UI."
+  ],
+  "isFixRequest": true,
+  "existing_features": [
+    {
+      "id": "feature-create-a-30-day-six-pack-workout-program-experience-that-lets-a-signed-in-user-browse-all-30-days-open-any-day-to-see-its-exercises-and-follow-the-program-in-a-clear-step-by-step-flow-using-english-ui-text",
+      "title": "Create a 30-day six-pack workout program experience that lets a signed-in user browse all 30 days, open any day to see its exercises, and follow the program in a clear step-by-step flow using English UI text.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-connect-the-frontend-to-the-backend-using-the-existing-internet-identity-flow-so-a-user-can-sign-in-out-and-see-their-own-saved-progress-reflected-in-the-ui",
+      "title": "Connect the frontend to the backend using the existing Internet Identity flow, so a user can sign in/out and see their own saved progress reflected in the UI.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-progress-dashboard-showing-overall-completion-e-g-completed-days-count-out-of-30-current-streak-if-applicable-and-a-clear-continue-entry-point-to-the-next-incomplete-day",
+      "title": "Add a progress dashboard showing overall completion (e.g., completed days count out of 30), current streak (if applicable), and a clear ‘Continue’ entry point to the next incomplete day.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-provide-an-in-workout-runner-ui-for-a-day-that-supports-checking-off-exercises-and-includes-simple-timers-for-timed-exercises-rest-local-only-timers-no-real-time-backend-updates-required",
+      "title": "Provide an in-workout runner UI for a day that supports checking off exercises and includes simple timers for timed exercises/rest (local-only timers; no real-time backend updates required).",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-coherent-distinct-visual-theme-suitable-for-a-fitness-challenge-app-colors-typography-spacing-component-styling-and-apply-it-consistently-across-all-pages-avoid-blue-purple-as-primary-colors",
+      "title": "Add a coherent, distinct visual theme suitable for a fitness challenge app (colors, typography, spacing, component styling) and apply it consistently across all pages; avoid blue/purple as primary colors.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-simple-onboarding-info-section-explaining-the-30-day-six-pack-challenge-safety-disclaimer-and-how-to-use-the-app-in-english",
+      "title": "Add a simple onboarding/info section explaining the 30-day six-pack challenge, safety disclaimer, and how to use the app (in English).",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-render-generated-static-image-assets-added-under-frontend-public-assets-generated-in-the-ui-e-g-hero-banner-and-icon-usage-without-routing-them-through-the-backend",
+      "title": "Render generated static image assets (added under frontend/public/assets/generated) in the UI (e.g., hero/banner and icon usage) without routing them through the backend.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-app-header-mobile-menu-appshell-styling-to-have-a-more-visually-engaging-fitness-look-by-adjusting-menu-colors-hover-active-states-and-adding-subtle-graphic-accents-while-keeping-all-navigation-labels-in-english",
+      "title": "Update the app header/mobile menu (AppShell) styling to have a more visually engaging fitness look by adjusting menu colors, hover/active states, and adding subtle graphic accents while keeping all navigation labels in English.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-six-pack-hero-banner-image-used-on-the-dashboard-so-the-design-better-matches-the-refreshed-menu-theme-same-warm-energetic-fitness-style-while-keeping-the-existing-dimensions-and-filename-usage-compatible-with-the-current-ui",
+      "title": "Update the six-pack hero banner image used on the Dashboard so the design better matches the refreshed menu theme (same warm, energetic fitness style) while keeping the existing dimensions and filename usage compatible with the current UI.",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-per-exercise-media-support-to-the-workout-content-model-so-each-exercise-can-optionally-include-either-an-image-local-static-asset-and-or-a-short-demo-video-local-static-asset-or-url-and-render-this-media-in-both-day-details-and-workout-runner-screens",
+      "title": "Add per-exercise media support to the workout content model so each exercise can optionally include either an image (local static asset) and/or a short demo video (local static asset or URL), and render this media in both Day Details and Workout Runner screens.",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-consistent-set-of-local-static-exercise-media-assets-images-at-minimum-for-the-core-exercise-types-used-throughout-the-30-day-plan-and-wire-the-program-content-to-reference-those-assets-so-media-appears-for-common-exercises-like-plank-crunches-bicycle-crunches-mountain-climbers-leg-raises-and-rest-recovery-moves",
+      "title": "Add a consistent set of local static exercise media assets (images at minimum) for the core exercise types used throughout the 30-day plan, and wire the program content to reference those assets so media appears for common exercises like Plank, Crunches, Bicycle Crunches, Mountain Climbers, Leg Raises, and Rest/Recovery moves.",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-workout-program-exercise-media-mapping-so-that-exercises-which-currently-have-an-image-configured-show-a-demo-video-instead-i-e-populate-videosrc-for-those-exercises-so-the-ui-renders-a-video-in-both-day-details-and-workout-runner",
+      "title": "Update the workout program exercise media mapping so that exercises which currently have an image configured show a demo video instead (i.e., populate `videoSrc` for those exercises so the UI renders a `<video>` in both Day Details and Workout Runner).",
+      "reqIds": [
+        "REQ-13"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-local-static-demo-video-assets-for-the-core-exercise-types-that-currently-have-images-place-them-under-frontend-public-assets-generated-and-reference-them-via-videosrc-using-assets-generated-paths",
+      "title": "Add local static demo video assets for the core exercise types that currently have images, place them under `frontend/public/assets/generated`, and reference them via `videoSrc` using `/assets/generated/...` paths.",
+      "reqIds": [
+        "REQ-14"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-prevent-day-details-including-day-1-from-failing-to-load-when-the-user-is-not-signed-in-by-ensuring-progress-related-react-query-requests-are-disabled-unless-the-user-is-authenticated-and-show-the-day-details-content-without-completion-badges-when-unauthenticated",
+      "title": "Prevent Day Details (including Day 1) from failing to load when the user is not signed in by ensuring progress-related React Query requests are disabled unless the user is authenticated, and show the Day Details content without completion badges when unauthenticated.",
+      "reqIds": [
+        "REQ-15"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-prevent-the-program-page-from-triggering-unauthorized-progress-calls-when-signed-out-by-gating-the-my-progress-query-on-authentication-and-keeping-the-schedule-browsable-for-unauthenticated-users",
+      "title": "Prevent the Program page from triggering unauthorized progress calls when signed out by gating the 'my progress' query on authentication and keeping the schedule browsable for unauthenticated users.",
+      "reqIds": [
+        "REQ-16"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-fix-the-workout-runner-countdown-timer-so-seconds-decrement-reliably-and-reset-correctly-whenever-the-current-exercise-changes-e-g-when-moving-from-the-first-timed-exercise-to-the-next-exercise-rest",
+      "title": "Fix the workout runner countdown timer so seconds decrement reliably and reset correctly whenever the current exercise changes (e.g., when moving from the first timed exercise to the next exercise/rest).",
+      "reqIds": [
+        "REQ-17"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-fix-exercise-demo-video-playback-so-videos-referenced-via-videosrc-load-and-play-consistently-and-provide-a-clear-in-ui-fallback-when-a-video-file-is-missing-or-fails-to-load",
+      "title": "Fix exercise demo video playback so videos referenced via `videoSrc` load and play consistently, and provide a clear in-UI fallback when a video file is missing or fails to load.",
+      "reqIds": [
+        "REQ-18"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Build a fitness app featuring a 30-day six-pack workout program.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Implement backend data models and APIs to store per-user 30-day program progress keyed by the authenticated Principal, including: getProgram, getMyProgress, markDayComplete(dayNumber), and resetMyProgress.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Update UI visuals (menu colors/graphics, edit six-pack imagery) and add per-exercise media on the exercise/workout screen (images and/or short demo videos).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Add a user profile form to capture basic metrics like age, height, and weight (and store/display them in the app).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Update exercise media so that where an exercise currently shows an image, it shows a demo video instead (exercise screen / workout runner).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Support alternative authentication methods (mobile number or Gmail login) in addition to Internet Identity.",
+      "reqIds": [],
+      "status": "blocked"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Six Pack 30",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}
